@@ -10,4 +10,4 @@ def shutdown(timer):
     os.system("shutdown -s")
 
 
-shutdown(10)
+shutdown(1)
