@@ -1,6 +1,7 @@
 import os
 import time
 
+
 def shutdown(timer):
     minutes = timer
 
@@ -11,4 +12,6 @@ def shutdown(timer):
     print("Shutting down...")
     os.system("shutdown -s")
 
-shutdown(60)  # Hier kannst du die gewünschte Zeit in Minuten ändern
+
+shutdown(70)  # Hier kannst du die gewünschte Zeit in Minuten ändern
+ 
