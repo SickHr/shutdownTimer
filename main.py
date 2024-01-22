@@ -13,5 +13,5 @@ def shutdown(timer):
     os.system("shutdown -s")
 
 
-shutdown(70)  # Hier kannst du die gewünschte Zeit in Minuten ändern
+shutdown(90)  # Hier kannst du die gewünschte Zeit in Minuten ändern
  
