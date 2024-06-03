@@ -3,15 +3,32 @@ import time
 
 
 def shutdown(timer):
-    minutes = timer
+    total_seconds = timer * 60
 
-    for remaining_time in range(minutes, 0, -1):
-        print(f"Remaining time till shutdown: {remaining_time} minutes")
-        time.sleep(60)  # hier wird 60 Sekunden gewartet, da wir in Minuten zählen
+    for remaining_seconds in range(total_seconds, 0, -1):
+        remaining_minutes, remaining_seconds_part = divmod(remaining_seconds, 60)
+        remaining_hours, remaining_minutes = divmod(remaining_minutes, 60)
+        print(
+            f"\rRemaining time till shutdown: {remaining_hours:02d}:{remaining_minutes:02d}:{remaining_seconds_part:02d}",
+            end="", flush=True)
+        time.sleep(1)
 
-    print("Shutting down...")
+    print("\nShutting down...")
     os.system("shutdown -s")
 
 
-shutdown(90)  # Hier kannst du die gewünschte Zeit in Minuten ändern
- 
+def main():
+    while True:
+        try:
+            user_input = int(input("Enter the shutdown timer in minutes: "))
+            if user_input <= 0:
+                raise ValueError
+            break
+        except ValueError:
+            print("Invalid input. Please enter a positive integer.")
+
+    shutdown(user_input)
+
+
+if __name__ == "__main__":
+    main()
